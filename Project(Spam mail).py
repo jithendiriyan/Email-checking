@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[27]:
+# In[2]:
 
 
 #Importing the libraries 
@@ -15,7 +15,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import LabelEncoder
 
 
-# In[28]:
+# In[3]:
 
 
 #importing the data as dataset
@@ -23,7 +23,7 @@ dataset = pd.read_csv("E:\DS project\Project Mail\spam_ham_dataset.csv")
 dataset
 
 
-# In[29]:
+# In[4]:
 
 
 #processing the step by step
@@ -31,19 +31,19 @@ dataset
 dataset.isnull().sum() # prints if any null values is present or not in dataset
 
 
-# In[30]:
+# In[5]:
 
 
 dataset.info() # prints information about the Dataset
 
 
-# In[31]:
+# In[6]:
 
 
 dataset.describe() # Returns description of the data in the Dataset
 
 
-# In[21]:
+# In[7]:
 
 
 #step 2:Data modelling (training and testind the data )
@@ -53,32 +53,40 @@ y = dataset['label_num']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=0)
 
 
-# In[22]:
+# In[8]:
 
 
 logmodel = LogisticRegression()
 logmodel.fit(X_train,y_train)
 
 
-# In[23]:
+# In[9]:
 
 
 LogisticRegression()
 
 
-# In[24]:
+# In[10]:
 
 
 predictions = logmodel.predict(X)
 predictions
 
 
-# In[25]:
+# In[11]:
 
 
 predictions = logmodel.predict([[605]])
 
 predictions
+
+
+# In[12]:
+
+
+# Evaluate the model on the testing data
+accuracy = logmodel.score(X_test, y_test)
+print("Accuracy on the testing set:", accuracy)
 
 
 # In[ ]:
